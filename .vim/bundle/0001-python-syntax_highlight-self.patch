@@ -1,0 +1,13 @@
+diff --git a/syntax/python.vim b/syntax/python.vim
+index e963628..5c3ac31 100644
+--- a/syntax/python.vim
++++ b/syntax/python.vim
+@@ -402,7 +402,7 @@ if s:Enabled("g:python_highlight_builtin_objs")
+     syn keyword pythonBuiltinObj	None
+     syn keyword pythonBoolean		True False
+   endif
+-  syn keyword pythonBuiltinObj	Ellipsis NotImplemented
++  syn keyword pythonBuiltinObj	Ellipsis NotImplemented self
+   syn keyword pythonBuiltinObj	__debug__ __doc__ __file__ __name__ __package__
+ endif
+ 
