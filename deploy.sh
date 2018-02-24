@@ -11,18 +11,27 @@ fi
 echo "Successfully installed packages for $SUDO_USER"
 
 HOMEDIR="/home/$SUDO_USER/"
+ROOTDIR=$(cwd)
 
 BackupAndSymlink () {
 	if [ -f $1 -o -d $1 ]; then
-		echo "Backing up $1 to $1.bak..."
+		echo "Backing up $1..."
+		mv $1 $ROOTDIR/
 		echo "Generating symlink $1 -> $2"
+		ln -s $2 $1
+	else
+		echo "Path $1 does not exist"
 	fi
 }
 
-BackupAndSymlink "/home/user/.vim" "bcd" 
-
-if [ -d $HOMEDIR/.vim ]; then
-	echo "$HOMEDIR/.vim found"
-	# mv $HOMEDIR/.vim $HOMEDIR/.vim.bak
+if ! [ -d $HOMEDIR/.conf.bak ]; then
+	echo "Creating $HOMEDIR/.conf.bak for backups"
 fi
+
+BackupAndSymlink "$HOMEDIR/.vim" "$ROOTDIR/.vim"
+BackupAndSymlink "$HOMEDIR/.vimrc" "$ROOTDIR/.vimrc"
+BackupAndSymlink "$HOMEDIR/.oh-my-zsh" "$ROOTDIR/.oh-my-zsh"
+BackupAndSymlink "$HOMEDIR/.zshrc" "$ROOTDIR/.zshrc"
+BackupAndSymlink "$HOMEDIR/.tmux.conf" "$ROOTDIR/.tmux.conf"
+
 exit 0
