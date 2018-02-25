@@ -11,12 +11,12 @@ fi
 echo "Successfully installed packages for $SUDO_USER"
 
 HOMEDIR="/home/$SUDO_USER/"
-ROOTDIR=$(cwd)
+ROOTDIR=$(pwd)
 
 BackupAndSymlink () {
 	if [ -f $1 -o -d $1 ]; then
 		echo "Backing up $1..."
-		mv $1 $ROOTDIR/
+		mv $1 $ROOTDIR/.conf.bak/
 	else
 		echo "Path $1 does not exist"
 	fi
