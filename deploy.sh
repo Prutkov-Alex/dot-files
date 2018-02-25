@@ -17,11 +17,12 @@ BackupAndSymlink () {
 	if [ -f $1 -o -d $1 ]; then
 		echo "Backing up $1..."
 		mv $1 $ROOTDIR/
-		echo "Generating symlink $1 -> $2"
-		ln -s $2 $1
 	else
 		echo "Path $1 does not exist"
 	fi
+
+	echo "Generating symlink $1 -> $2"
+	ln -s $2 $1
 }
 
 if ! [ -d $HOMEDIR/.conf.bak ]; then
