@@ -1,22 +1,21 @@
 #!/bin/bash
 
-if ! [ $(id -u) = 0 ]; then
-	echo "This script must have root privileges for installing packages."
-	echo "Please rerun with sudo"
+if ! [ $(id -u) != 0 ]; then
+	echo "This script must NOT have root privileges."
+	echo "I will ask for root password if needed"
 	exit 1
 fi
 
-#apt-get install vim tmux powerline zsh 
+bash ./installs.sh
 
 echo "Successfully installed packages for $SUDO_USER"
 
-HOMEDIR="/home/$SUDO_USER/"
 ROOTDIR=$(pwd)
 
 BackupAndSymlink () {
 	if [ -f $1 -o -d $1 ]; then
 		echo "Backing up $1..."
-		mv $1 $ROOTDIR/.conf.bak/
+		mv $1 ~/.conf.bak/
 	else
 		echo "Path $1 does not exist"
 	fi
@@ -25,14 +24,14 @@ BackupAndSymlink () {
 	ln -s $2 $1
 }
 
-if ! [ -d $HOMEDIR/.conf.bak ]; then
-	echo "Creating $HOMEDIR/.conf.bak for backups"
+if ! [ -d ~/.conf.bak ]; then
+	echo "Creating ~/.conf.bak for backups"
 fi
 
-BackupAndSymlink "$HOMEDIR/.vim" "$ROOTDIR/.vim"
-BackupAndSymlink "$HOMEDIR/.vimrc" "$ROOTDIR/.vimrc"
-BackupAndSymlink "$HOMEDIR/.oh-my-zsh" "$ROOTDIR/.oh-my-zsh"
-BackupAndSymlink "$HOMEDIR/.zshrc" "$ROOTDIR/.zshrc"
-BackupAndSymlink "$HOMEDIR/.tmux.conf" "$ROOTDIR/.tmux.conf"
+BackupAndSymlink "~/.vim" "$ROOTDIR/.vim"
+BackupAndSymlink "~/.vimrc" "$ROOTDIR/.vimrc"
+BackupAndSymlink "~/.oh-my-zsh" "$ROOTDIR/.oh-my-zsh"
+BackupAndSymlink "~/.zshrc" "$ROOTDIR/.zshrc"
+BackupAndSymlink "~/.tmux.conf" "$ROOTDIR/.tmux.conf"
 
 exit 0
