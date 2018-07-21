@@ -18,8 +18,10 @@ GenProfile () {
 	UUID=$(uuidgen)
 	echo "Generated UUID: $UUID"
 	cat profile.dconf | dconf load "/org/gnome/terminal/legacy/profiles:/:$UUID/"
+	NEWLIST=$(dconf read "/org/gnome/terminal/legacy/profiles:/list" | sed "s/\]/\,\ \'$UUID\'\]/")
+	echo $NEWLIST
+	dconf write "/org/gnome/terminal/legacy/profiles:/list" "$NEWLIST"
 	dconf write "/org/gnome/terminal/legacy/profiles:/default" "'$UUID'"
-	#TODO: add to list of visible profiles
 }
 
 if ! [ $(id -u) != 0 ]; then
@@ -46,12 +48,11 @@ BackupAndSymlink "$HOME/.oh-my-zsh" "$ROOTDIR/.oh-my-zsh"
 BackupAndSymlink "$HOME/.zshrc" "$ROOTDIR/.zshrc"
 BackupAndSymlink "$HOME/.tmux.conf" "$ROOTDIR/.tmux.conf"
 
-GenProfile
-
 echo "Change default shell to zsh..."
 chsh -s /bin/zsh
 
+GenProfile
+
 echo "Logging out to apply changes"
 gnome-session-quit --logout
-exit 0
 exit 0
