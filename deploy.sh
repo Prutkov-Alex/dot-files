@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e
 if ! [ $(id -u) != 0 ]; then
 	echo "This script must NOT have root privileges."
 	echo "I will ask for root password if needed"
