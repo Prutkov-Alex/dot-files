@@ -6,7 +6,7 @@ if ! [ $(id -u) != 0 ]; then
 	exit 1
 fi
 
-git submodules update --init
+git submodule update --init
 
 bash ./installs.sh
 
