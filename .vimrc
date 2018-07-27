@@ -31,3 +31,14 @@ set laststatus=2
 """"" Syntastic settings
 let g:syntastic_cpp_compiler_options = ' -std=c++14'
 let g:syntastic_python_checkers = ['flake8']
+
+""""" Go plugin settings
+" Highlight
+let g:go_highlight_functions = 1  
+let g:go_highlight_methods = 1  
+let g:go_highlight_structs = 1  
+let g:go_highlight_operators = 1  
+let g:go_highlight_build_constraints = 1  
+
+""""" CtrlP
+let g:ctrlp_working_path_mode = 0
