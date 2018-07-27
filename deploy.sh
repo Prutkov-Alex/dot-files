@@ -18,9 +18,10 @@ GenProfile () {
 	UUID=$(uuidgen)
 	echo "Generated UUID: $UUID"
 	cat profile.dconf | dconf load "/org/gnome/terminal/legacy/profiles:/:$UUID/"
-	NEWLIST=$(dconf read "/org/gnome/terminal/legacy/profiles:/list" | sed "s/\]/\,\ \'$UUID\'\]/")
-	echo $NEWLIST
-	dconf write "/org/gnome/terminal/legacy/profiles:/list" "$NEWLIST"
+	#NEWLIST=$(dconf read "/org/gnome/terminal/legacy/profiles:/list" | sed "s/\]/\,\ \'$UUID\'\]/")
+	#echo $NEWLIST
+	dconf write "/org/gnome/terminal/legacy/profiles:/list" "['$UUID']"
+	#dconf write "/org/gnome/terminal/legacy/profiles:/list" "$NEWLIST"
 	dconf write "/org/gnome/terminal/legacy/profiles:/default" "'$UUID'"
 }
 
