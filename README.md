@@ -1,9 +1,12 @@
 # dot-files
-My dotfiles and supplementary config folders for Zsh, vim, tmux, colortheme
+My dotfiles and supplementary config folders for Zsh, vim, tmux,
+colortheme and other configurations I am used to.
 
 ==Steps==
-1. Do not forget the .patch files after the deployment.
+1. Run ./deploy.sh script. It will ask for sudo password if needed
+2. Layout settings are not deployed automatically. To make changes manually:
+	2.1. Diff the 'ru' file with one located at '/usr/share/X11/xkb/symbols/ru'
+		 and make sure you are satisfied with the changes.
+	2.2. Add 'Russian(Phonetic)' layout via 'Settings', or take a look at
+		 'dconf dump "/org/gnome/desktop/input-sources/"' in case you are with headless setup.
 
-
-==TODOS==
-* Write deployment script
