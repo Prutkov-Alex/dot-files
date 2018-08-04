@@ -6,4 +6,4 @@
 #	exit 1
 #fi
 
-sudo apt-get install -y vim tmux powerline zsh 
+sudo apt-get install -y vim tmux powerline zsh uuid-runtime
