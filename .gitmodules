@@ -10,9 +10,6 @@
 [submodule ".vim/bundle/python-syntax"]
 	path = .vim/bundle/python-syntax
 	url = https://github.com/hdima/python-syntax.git
-[submodule ".vim/bundle/syntastic"]
-	path = .vim/bundle/syntastic
-	url = https://github.com/vim-syntastic/syntastic.git
 [submodule ".vim/bundle/vim-autoformat"]
 	path = .vim/bundle/vim-autoformat
 	url = https://github.com/chiel92/vim-autoformat
