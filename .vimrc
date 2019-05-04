@@ -29,8 +29,8 @@ set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set laststatus=2
 
 """"" Syntastic settings
-let g:syntastic_cpp_compiler_options = ' -std=c++14'
-let g:syntastic_python_checkers = ['flake8']
+"let g:syntastic_cpp_compiler_options = ' -std=c++14'
+"let g:syntastic_python_checkers = ['flake8']
 
 """"" Go plugin settings
 " Highlight
